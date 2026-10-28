@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10131c" />
+    <meta
+      name="description"
+      content="Loman Studio — a professional color toolkit for designers and developers."
+    />
+    <title>Loman Studio — Color Toolkit</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Loman Studio home">
+          <span class="brand-mark">◈</span>
+          <span>loman<span class="brand-light">studio</span></span>
+        </a>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="navigation" aria-label="Main navigation">
+          <a class="nav-item active" href="#workspace"
+            >◉ <span>Color studio</span></a
+          >
+          <a class="nav-item" href="#palette">▦ <span>Palettes</span></a>
+          <a class="nav-item" href="#gradient">◒ <span>Gradients</span></a>
+          <a class="nav-item" href="#contrast"
+            >◐ <span>Contrast checker</span></a
+          >
+          <a class="nav-item" href="#accessibility"
+            >◎ <span>Accessibility</span></a
+          >
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            <span class="status-dot"></span>
+            <div>
+              <strong>Ready to create</strong
+              ><small>Your color workspace</small>
+            </div>
+          </div>
+          <p class="muted tiny">LOMAN STUDIO · 1.0</p>
+        </div>
+      </aside>
+
+      <main class="main-content" id="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">DESIGN TOOLKIT / COLOR</p>
+            <h1>Color studio<span class="heading-period">.</span></h1>
+            <p class="subheading">
+              Explore color, build palettes, and create with confidence.
+            </p>
+          </div>
+          <div class="top-actions">
+            <button class="button button-quiet" id="random-color" type="button">
+              ↻ Random color
+            </button>
+            <button
+              class="button button-primary"
+              id="save-favorite"
+              type="button"
+            >
+              ☆ Save color
+            </button>
+          </div>
+        </header>
+
+        <section class="workspace-grid">
+          <article class="panel color-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">01 / PICKER</p>
+                <h2>Color explorer</h2>
+              </div>
+              <span class="live-pill"
+                ><span class="status-dot"></span> Live</span
+              >
+            </div>
+
+            <div class="color-preview" id="color-preview">
+              <div class="preview-overlay">
+                <span class="preview-caption">CURRENT COLOR</span>
+                <strong id="preview-hex">#7868E6</strong>
+              </div>
+            </div>
+
+            <div class="picker-row">
+              <label class="field-label" for="native-picker"
+                >Choose a color</label
+              >
+              <input
+                id="native-picker"
+                type="color"
+                value="#7868e6"
+                aria-label="Choose current color"
+              />
+              <button id="copy-hex" class="button button-outline" type="button">
+                Copy HEX
+              </button>
+            </div>
+
+            <label class="field-label" for="hex-input">HEX value</label>
+            <div class="input-with-action">
+              <span class="input-prefix">#</span>
+              <input
+                id="hex-input"
+                type="text"
+                value="7868E6"
+                maxlength="7"
+                spellcheck="false"
+                autocomplete="off"
+                aria-describedby="hex-help"
+              />
+              <button id="apply-hex" class="button button-small" type="button">
+                Apply
+              </button>
+            </div>
+            <p class="helper-text" id="hex-help">
+              Enter a 3- or 6-digit hexadecimal color.
+            </p>
+
+            <div class="section-divider"></div>
+            <div class="panel-heading compact-heading">
+              <h3>Color values</h3>
+              <span class="muted tiny">EDITABLE</span>
+            </div>
+
+            <div class="value-grid">
+              <label class="value-field"
+                ><span>R</span
+                ><input id="rgb-r" type="number" min="0" max="255" value="120"
+              /></label>
+              <label class="value-field"
+                ><span>G</span
+                ><input id="rgb-g" type="number" min="0" max="255" value="104"
+              /></label>
+              <label class="value-field"
+                ><span>B</span
+                ><input id="rgb-b" type="number" min="0" max="255" value="230"
+              /></label>
+            </div>
+            <div class="value-grid hsl-grid">
+              <label class="value-field"
+                ><span>H°</span
+                ><input id="hsl-h" type="number" min="0" max="360" value="247"
+              /></label>
+              <label class="value-field"
+                ><span>S%</span
+                ><input id="hsl-s" type="number" min="0" max="100" value="71"
+              /></label>
+              <label class="value-field"
+                ><span>L%</span
+                ><input id="hsl-l" type="number" min="0" max="100" value="65"
+              /></label>
+            </div>
+            <p class="helper-text">
+              Edit RGB or HSL values and press Enter to apply.
+            </p>
+          </article>
+
+          <article class="panel palette-panel" id="palette">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">02 / GENERATOR</p>
+                <h2>Color harmonies</h2>
+              </div>
+              <button
+                class="icon-button"
+                id="regenerate-palette"
+                type="button"
+                aria-label="Regenerate palette"
+                title="Regenerate palette"
+              >
+                ↻
+              </button>
+            </div>
+            <p class="muted body-copy">
+              Build a balanced palette from your current color.
+            </p>
+
+            <label class="field-label" for="harmony-select">Harmony mode</label>
+            <select id="harmony-select">
+              <option value="complementary">Complementary</option>
+              <option value="analogous">Analogous</option>
+              <option value="triadic">Triadic</option>
+              <option value="split">Split complementary</option>
+              <option value="tetradic">Tetradic</option>
+              <option value="monochromatic">Monochromatic</option>
+            </select>
+
+            <div
+              id="palette-swatches"
+              class="palette-swatches"
+              aria-label="Generated color palette"
+            ></div>
+
+            <div class="palette-footer">
+              <span class="muted tiny" id="palette-count">5 COLORS</span>
+              <button
+                id="copy-palette"
+                class="button button-outline"
+                type="button"
+              >
+                Copy palette
+              </button>
+            </div>
+
+            <div class="section-divider"></div>
+            <div class="panel-heading compact-heading">
+              <h3>Color wheel</h3>
+              <span class="muted tiny">HUE RELATIONSHIPS</span>
+            </div>
+            <div class="wheel-layout">
+              <div
+                class="color-wheel"
+                id="color-wheel"
+                role="img"
+                aria-label="Hue wheel showing the current color"
+              ></div>
+              <div class="wheel-legend">
+                <p><span class="legend-dot current-dot"></span> Current hue</p>
+                <p>
+                  <span class="legend-dot harmony-dot"></span> Harmony colors
+                </p>
+                <p class="muted tiny">
+                  Select a palette swatch to explore its color.
+                </p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel gradient-panel" id="gradient">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">03 / BLEND</p>
+              <h2>Gradient studio</h2>
+            </div>
+            <div class="inline-controls">
+              <label class="compact-label" for="gradient-angle">Angle</label>
+              <input
+                id="gradient-angle"
+                type="number"
+                min="0"
+                max="360"
+                value="135"
+              />
+              <span>°</span>
+            </div>
+          </div>
+          <div
+            id="gradient-preview"
+            class="gradient-preview"
+            aria-label="Gradient preview"
+          ></div>
+          <div class="gradient-controls">
+            <label class="gradient-color-field"
+              ><span>START COLOR</span>
+              <div>
+                <input id="gradient-start" type="color" value="#7868e6" /><code
+                  id="gradient-start-label"
+                  >#7868E6</code
+                >
+              </div></label
+            >
+            <button
+              id="swap-gradient"
+              class="swap-button"
+              type="button"
+              aria-label="Swap gradient colors"
+              title="Swap colors"
+            >
+              ⇄
+            </button>
+            <label class="gradient-color-field"
+              ><span>END COLOR</span>
+              <div>
+                <input id="gradient-end" type="color" value="#e668a6" /><code
+                  id="gradient-end-label"
+                  >#E668A6</code
+                >
+              </div></label
+            >
+            <button
+              id="copy-gradient"
+              class="button button-outline"
+              type="button"
+            >
+              Copy CSS
+            </button>
+          </div>
+          <div class="code-preview">
+            <code id="gradient-css"
+              >background: linear-gradient(135deg, #7868E6, #E668A6);</code
+            ><button id="copy-gradient-code" type="button" class="text-button">
+              Copy code
+            </button>
+          </div>
+        </section>
+
+        <section class="lower-grid">
+          <article class="panel" id="contrast">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">04 / WCAG</p>
+                <h2>Contrast checker</h2>
+              </div>
+              <span class="contrast-icon">Aa</span>
+            </div>
+            <p class="muted body-copy">
+              Check text readability against a background color.
+            </p>
+            <div class="contrast-inputs">
+              <label class="gradient-color-field"
+                ><span>TEXT COLOR</span>
+                <div>
+                  <input id="contrast-text" type="color" value="#ffffff" /><code
+                    id="contrast-text-label"
+                    >#FFFFFF</code
+                  >
+                </div></label
+              >
+              <label class="gradient-color-field"
+                ><span>BACKGROUND</span>
+                <div>
+                  <input id="contrast-bg" type="color" value="#7868e6" /><code
+                    id="contrast-bg-label"
+                    >#7868E6</code
+                  >
+                </div></label
+              >
+            </div>
+            <div id="contrast-preview" class="contrast-preview">
+              <strong>Readable by design.</strong>
+              <p>The quick brown fox jumps over the lazy dog.</p>
+              <small>Preview text for your color combination.</small>
+            </div>
+            <div class="contrast-result">
+              <div>
+                <span class="muted tiny">CONTRAST RATIO</span
+                ><strong id="contrast-ratio">4.00:1</strong>
+              </div>
+              <div class="wcag-badges" id="wcag-results"></div>
+            </div>
+          </article>
+
+          <article class="panel" id="accessibility">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">05 / ACCESSIBILITY</p>
+                <h2>Vision simulator</h2>
+              </div>
+              <span class="accessibility-icon">◎</span>
+            </div>
+            <p class="muted body-copy">
+              Preview how your selected color appears with common color vision
+              deficiencies.
+            </p>
+            <label class="field-label" for="vision-mode">Simulation mode</label>
+            <select id="vision-mode">
+              <option value="normal">Normal vision</option>
+              <option value="protanopia">Protanopia — red-blind</option>
+              <option value="deuteranopia">Deuteranopia — green-blind</option>
+              <option value="tritanopia">Tritanopia — blue-blind</option>
+              <option value="achromatopsia">Achromatopsia — grayscale</option>
+            </select>
+            <div id="vision-preview" class="vision-preview">
+              <div id="vision-swatch" class="vision-swatch"></div>
+              <div>
+                <span class="muted tiny">SIMULATED COLOR</span
+                ><strong id="vision-hex">#7868E6</strong>
+                <p class="muted tiny" id="vision-description">
+                  Normal color vision
+                </p>
+              </div>
+            </div>
+            <p class="helper-text">
+              This is an approximate preview, not a clinical simulation.
+            </p>
+          </article>
+        </section>
+
+        <section class="panel favorites-panel" id="favorites">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">06 / COLLECTION</p>
+              <h2>Saved colors</h2>
+            </div>
+            <button
+              id="clear-favorites"
+              class="button button-quiet"
+              type="button"
+            >
+              Clear all
+            </button>
+          </div>
+          <p class="muted body-copy">
+            Your favorite colors stay in this browser between visits.
+          </p>
+          <div id="favorites-list" class="favorites-list">
+            <p class="empty-state">
+              No saved colors yet. Choose a color and select “Save color”.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel export-panel" id="export">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">07 / HANDOFF</p>
+              <h2>Export your palette</h2>
+            </div>
+            <span class="export-icon">↗</span>
+          </div>
+          <p class="muted body-copy">
+            Take your colors into your design or development workflow.
+          </p>
+          <div class="export-grid">
+            <button class="export-option" data-export="css" type="button">
+              <span class="file-icon">CSS</span><strong>CSS variables</strong
+              ><small>Custom properties</small>
+            </button>
+            <button class="export-option" data-export="scss" type="button">
+              <span class="file-icon">SCSS</span><strong>SCSS variables</strong
+              ><small>Sass-ready tokens</small>
+            </button>
+            <button class="export-option" data-export="svg" type="button">
+              <span class="file-icon">SVG</span><strong>SVG palette</strong
+              ><small>Visual swatches</small>
+            </button>
+            <button class="export-option" data-export="json" type="button">
+              <span class="file-icon">{ }</span><strong>JSON data</strong
+              ><small>Structured colors</small>
+            </button>
+            <button class="export-option" data-export="gpl" type="button">
+              <span class="file-icon">GPL</span><strong>GIMP palette</strong
+              ><small>Compatible palette file</small>
+            </button>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <a class="brand footer-brand" href="#"
+            ><span class="brand-mark">◈</span
+            ><span>loman<span class="brand-light">studio</span></span></a
+          >
+          <span>Made for people who think in color.</span>
+          <a href="#workspace">Back to top ↑</a>
+        </footer>
+      </main>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/color-utils.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>
